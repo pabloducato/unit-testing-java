@@ -9,12 +9,10 @@ mvn -Dtest=AccountTest test
 
 ##example 1
 
-mvn -Dtest=AccountTest#test_checkWheth
-erNewAccountIsNotActive test
+mvn -Dtest=AccountTest#test_checkWhetherNewAccountIsNotActive test
 
 ##example 2
-mvn -Dtest=AccountTest#test_checkWheth
-erAccountWasActivated test
+mvn -Dtest=AccountTest#test_checkWhetherAccountWasActivated test
 
 ```
 
