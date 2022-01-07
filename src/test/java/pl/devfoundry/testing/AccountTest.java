@@ -70,6 +70,7 @@ class AccountTest {
 
         // then
         assertNotNull(testedAddress);
+        assertThat(testedAddress, notNullValue());
         assertEquals(address, testedAddress);
         assertThat(testedAddress, equalTo(address));
         assertThat(testedAddress, is(address));
