@@ -24,4 +24,8 @@ public class Order {
         return Collections.unmodifiableList(list);
     }
 
+    public void cancel(List<Meal> list) {
+        list.clear();
+    }
+
 }

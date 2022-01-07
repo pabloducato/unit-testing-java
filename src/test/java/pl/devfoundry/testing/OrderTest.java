@@ -1,5 +1,6 @@
 package pl.devfoundry.testing;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,21 +14,41 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 
+@Slf4j
 class OrderTest {
+
+    private static final Integer VALUE_0 = 0;
+    private static final Integer VALUE_1 = 1;
+    private static final Integer VALUE_2 = 2;
+    private static final Integer VALUE_3 = 3;
+    private static final Integer VALUE_4 = 4;
+    private static final Integer VALUE_15 = 15;
+    private static final Integer VALUE_18 = 18;
+
+    private static final String BURGER = "Burger";
+    private static final String SANDWICH = "Sandwich";
+    private static final String DARA_KEBAB = "Dara Kebab";
+
+    private Order order;
+    private final List<Meal> meals = new ArrayList<>();
 
     @BeforeEach
     void setUp() {
+        log.info("@BeforeEach -> Launched inside the @BeforeEach annotated `setUp` method");
+        order = Order.builder().build();
     }
 
     @AfterEach
     void tearDown() {
+        order.cancel(meals);
+        log.info("@AfterEach -> Launched inside the @AfterEach annotated `tearDown` method");
     }
 
     @Test
     void test_assertArrayEquals() {
         // given
-        int[] intsFirst = {1, 2, 3};
-        int[] intsSecond = {1, 2, 3};
+        int[] intsFirst = {VALUE_1, VALUE_2, VALUE_3};
+        int[] intsSecond = {VALUE_1, VALUE_2, VALUE_3};
 
         // when // then
         assertArrayEquals(intsFirst, intsSecond);
@@ -36,8 +57,8 @@ class OrderTest {
     @Test
     void test_assertArrayNotEquals() {
         // given
-        int[] intsFirst = {1, 2, 3};
-        int[] intsSecond = {1, 2, 4};
+        int[] intsFirst = {VALUE_1, VALUE_2, VALUE_3};
+        int[] intsSecond = {VALUE_1, VALUE_2, VALUE_4};
 
         // when // then
         assertNotSame(intsFirst, intsSecond);
@@ -45,49 +66,42 @@ class OrderTest {
 
     @Test
     void test_mealListShouldBeEmptyAfterCreationOfAnOrder() {
-        // given
-        final Order order = Order.builder().build();
-
-        // when // then
+        // given // when // then
         assertThat(order.getMeals(), empty());
-        assertThat(order.getMeals().size(), equalTo(0));
-        assertThat(order.getMeals(), hasSize(0));
+        assertThat(order.getMeals().size(), equalTo(VALUE_0));
+        assertThat(order.getMeals(), hasSize(VALUE_0));
         assertThat(order.getMeals(), emptyCollectionOf(Meal.class));
     }
 
     @Test
     void test_addingMealToOrderShouldIncreaseOrderSize() {
         // given
-        final Meal ourFirstMeal = new Meal(15, "Burger");
-        final Meal ourSecondMeal = new Meal(15, "Sandwich");
-        final Order order = Order.builder().build();
-        final List<Meal> meals = new ArrayList<>();
+        final Meal ourFirstMeal = new Meal(VALUE_15, BURGER);
+        final Meal ourSecondMeal = new Meal(VALUE_15, SANDWICH);
 
         // when
         order.setMeals(order.addMealToOrder(meals, ourFirstMeal));
 
         // then
-        assertThat(order.getMeals(), hasSize(1));
+        assertThat(order.getMeals(), hasSize(VALUE_1));
         assertThat(order.getMeals(), contains(ourFirstMeal));
         assertThat(order.getMeals(), hasItem(ourFirstMeal));
-        assertThat(order.getMeals().get(0).getPrice(), equalTo(15));
+        assertThat(order.getMeals().get(VALUE_0).getPrice(), equalTo(15));
         assertThat(order.getMeals(), not(contains(ourSecondMeal)));
     }
 
     @Test
     void test_removingMealFromTheOrderShouldDecreaseOrderSize() {
         // given
-        final Meal ourFirstMeal = new Meal(15, "Burger");
-        final Meal ourSecondMeal = new Meal(15, "Sandwich");
-        final Order order = Order.builder().build();
-        final List<Meal> meals = new ArrayList<>();
+        final Meal ourFirstMeal = new Meal(VALUE_15, BURGER);
+        final Meal ourSecondMeal = new Meal(VALUE_15, SANDWICH);
 
         // when
         order.setMeals(order.addMealToOrder(meals, ourFirstMeal));
         order.setMeals(order.removeMealFromTheOrder(meals, ourFirstMeal));
 
         // then
-        assertThat(order.getMeals(), hasSize(0));
+        assertThat(order.getMeals(), hasSize(VALUE_0));
         assertThat(order.getMeals(), not(contains(ourFirstMeal)));
         assertThat(order.getMeals(), not(contains(ourSecondMeal)));
     }
@@ -95,10 +109,8 @@ class OrderTest {
     @Test
     void test_mealsShouldBeInCorrectOrderAfterAddingThemToOrder() {
         // given
-        final Meal ourFirstMeal = new Meal(15, "Burger");
-        final Meal ourSecondMeal = new Meal(15, "Sandwich");
-        final Order order = Order.builder().build();
-        final List<Meal> meals = new ArrayList<>();
+        final Meal ourFirstMeal = new Meal(VALUE_15, BURGER);
+        final Meal ourSecondMeal = new Meal(VALUE_15, SANDWICH);
 
         // when
         order.setMeals(order.addMealToOrder(meals, ourFirstMeal));
@@ -112,9 +124,9 @@ class OrderTest {
     @Test
     void test_ifTwoMealListsAreTheSame() {
         // given
-        final Meal ourFirstMeal = new Meal(15, "Burger");
-        final Meal ourSecondMeal = new Meal(15, "Sandwich");
-        final Meal ourThirdMeal = new Meal(18, "Dara Kebab");
+        final Meal ourFirstMeal = new Meal(VALUE_15, BURGER);
+        final Meal ourSecondMeal = new Meal(VALUE_15, SANDWICH);
+        final Meal ourThirdMeal = new Meal(VALUE_18, DARA_KEBAB);
         final List<Meal> listOfMealsOne = Arrays.asList(ourFirstMeal, ourSecondMeal);
         final List<Meal> listOfMealsTwo = Arrays.asList(ourFirstMeal, ourSecondMeal);
 
