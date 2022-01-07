@@ -4,6 +4,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.not;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MealTest {
@@ -25,6 +28,7 @@ class MealTest {
         final int discountedPrice = meal.getDiscountedPrice(7);
         // then
         assertEquals(expectedPrice, discountedPrice, "The commentary");
+        assertThat(discountedPrice, equalTo(expectedPrice));
     }
 
     @Test
@@ -36,6 +40,7 @@ class MealTest {
         mealSecond = mealFirst;
         // then
         assertSame(mealFirst, mealSecond, "The commentary");
+        assertThat(mealSecond, equalTo(mealFirst));
     }
 
     @Test
@@ -45,6 +50,7 @@ class MealTest {
         final Meal mealSecond = new Meal(20, null);
         // when
         assertNotSame(mealSecond, mealFirst, "The commentary");
+        assertThat(mealSecond, not(mealFirst));
     }
 
     @Test
@@ -54,5 +60,7 @@ class MealTest {
         final Meal mealSecond = new Meal(10, "Pizza");
         // then
         assertEquals(mealFirst, mealSecond, "The commentary");
+        assertThat(mealSecond, equalTo(mealFirst));
     }
+
 }
