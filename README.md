@@ -38,6 +38,10 @@ Matchers are very helpful and can correct the visibility, the readability, and c
 
 We encourage you to use the Hamcrest && Assertj matching libraties
 
+## .gitignore templates
+
+Site: https://github.com/github/gitignore
+
 ```
 
 
