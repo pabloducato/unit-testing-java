@@ -5,8 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MealTest {
@@ -29,6 +28,7 @@ class MealTest {
         // then
         assertEquals(expectedPrice, discountedPrice, "The commentary");
         assertThat(discountedPrice, equalTo(expectedPrice));
+        assertThat(discountedPrice, is(expectedPrice));
     }
 
     @Test
@@ -41,6 +41,7 @@ class MealTest {
         // then
         assertSame(mealFirst, mealSecond, "The commentary");
         assertThat(mealSecond, equalTo(mealFirst));
+        assertThat(mealSecond, is(mealFirst));
     }
 
     @Test
@@ -61,6 +62,7 @@ class MealTest {
         // then
         assertEquals(mealFirst, mealSecond, "The commentary");
         assertThat(mealSecond, equalTo(mealFirst));
+        assertThat(mealSecond, is(mealFirst));
     }
 
 }
