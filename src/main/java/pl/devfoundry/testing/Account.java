@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 public class Account {
 
     private boolean active = false;
+    private Address defaultDeliveryAddress;
 
     public void activate() {
         this.active = true;

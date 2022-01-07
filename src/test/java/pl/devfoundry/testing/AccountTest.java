@@ -4,8 +4,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.*;
 
 class AccountTest {
 
@@ -23,6 +24,7 @@ class AccountTest {
         final Account account = new Account();
         // then
         assertFalse(account.isActive(), "Check whether new account is not active");
+        assertThat(account.isActive(), equalTo(false));
     }
 
     @Test
@@ -33,8 +35,40 @@ class AccountTest {
 
         // when
         account.activate();
+
         // then
         assertTrue(account.isActive(), "Check whether account was activated");
+        assertThat(account.isActive(), equalTo(true));
+    }
+
+    @Test
+    @SuppressWarnings("all")
+    void test_newlyCreatedAccountShouldNotHaveDefaultDeliveryAddress() {
+        // given
+        final Account account = new Account();
+
+        // when
+        final Address address = account.getDefaultDeliveryAddress();
+
+        // then
+        assertNull(address);
+        assertThat(address, equalTo(null));
+    }
+
+    @Test
+    void test_defaultDeliveryAddressShouldNotBeNulAfterBeingSet() {
+        // given
+        final Address address = new Address("Krakowska", "67c");
+        final Account account = new Account();
+        account.setDefaultDeliveryAddress(address);
+
+        // when
+        final Address testedAddress = account.getDefaultDeliveryAddress();
+
+        // then
+        assertNotNull(testedAddress);
+        assertEquals(address, testedAddress);
+        assertThat(testedAddress, equalTo(address));
     }
 
 }
