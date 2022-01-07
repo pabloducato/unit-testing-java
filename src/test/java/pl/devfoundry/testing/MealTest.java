@@ -1,5 +1,6 @@
 package pl.devfoundry.testing;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,8 +28,13 @@ class MealTest {
         final int discountedPrice = meal.getDiscountedPrice(7);
         // then
         assertEquals(expectedPrice, discountedPrice, "The commentary");
+
+        // hamcrest
         assertThat(discountedPrice, equalTo(expectedPrice));
         assertThat(discountedPrice, is(expectedPrice));
+
+        // assertJ
+        Assertions.assertThat(expectedPrice).isEqualTo(discountedPrice);
     }
 
     @Test
@@ -40,8 +46,14 @@ class MealTest {
         mealSecond = mealFirst;
         // then
         assertSame(mealFirst, mealSecond, "The commentary");
+
+        // assertJ
+        Assertions.assertThat(mealFirst).isSameAs(mealSecond);
+
+        // hamcrest
         assertThat(mealSecond, equalTo(mealFirst));
         assertThat(mealSecond, is(mealFirst));
+        assertThat(mealFirst, sameInstance(mealSecond));
     }
 
     @Test
@@ -51,7 +63,13 @@ class MealTest {
         final Meal mealSecond = new Meal(20, null);
         // when
         assertNotSame(mealSecond, mealFirst, "The commentary");
+
+        // assertJ
+        Assertions.assertThat(mealFirst).isNotSameAs(mealSecond);
+
+        // hamcrest
         assertThat(mealSecond, not(mealFirst));
+        assertThat(mealSecond, not(sameInstance(mealFirst)));
     }
 
     @Test
@@ -61,6 +79,11 @@ class MealTest {
         final Meal mealSecond = new Meal(10, "Pizza");
         // then
         assertEquals(mealFirst, mealSecond, "The commentary");
+
+        // assertJ
+        Assertions.assertThat(mealFirst).isEqualTo(mealSecond);
+
+        // hamcrest
         assertThat(mealSecond, equalTo(mealFirst));
         assertThat(mealSecond, is(mealFirst));
     }

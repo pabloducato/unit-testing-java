@@ -1,5 +1,6 @@
 package pl.devfoundry.testing;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,8 +25,13 @@ class AccountTest {
         final Account account = new Account();
         // then
         assertFalse(account.isActive(), "Check whether new account is not active");
+
+        // hamcrest
         assertThat(account.isActive(), equalTo(false));
         assertThat(account.isActive(), is(false));
+
+        // assertJ
+        Assertions.assertThat(account.isActive()).isFalse();
     }
 
     @Test
@@ -39,8 +45,13 @@ class AccountTest {
 
         // then
         assertTrue(account.isActive(), "Check whether account was activated");
+
+        // hamcrest
         assertThat(account.isActive(), equalTo(true));
         assertThat(account.isActive(), is(true));
+
+        // assertJ
+        Assertions.assertThat(account.isActive()).isTrue();
     }
 
     @Test
@@ -54,6 +65,11 @@ class AccountTest {
 
         // then
         assertNull(address);
+
+        // assertJ
+        Assertions.assertThat(address).isNull();
+
+        // hamcrest
         assertThat(address, equalTo(null));
         assertThat(address, nullValue());
     }
@@ -70,8 +86,16 @@ class AccountTest {
 
         // then
         assertNotNull(testedAddress);
+
+        // assertJ
+        Assertions.assertThat(testedAddress).isNotNull();
+
+        // hamcrest
         assertThat(testedAddress, notNullValue());
+        assertThat(testedAddress, is(notNullValue()));
         assertEquals(address, testedAddress);
+
+        // hamcrest
         assertThat(testedAddress, equalTo(address));
         assertThat(testedAddress, is(address));
     }
