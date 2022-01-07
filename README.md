@@ -15,7 +15,11 @@ mvn -Dtest=AccountTest#test_checkWhetherNewAccountIsNotActive test
 
 mvn -Dtest=AccountTest#test_checkWhetherAccountWasActivated test
 
+##Guidelines
+
 The Hamcrest's is() matcher will throw NullPointerException when the expecattion is `null`
+
+It's better to use the assertThat() -> nullValue() expected assertion rather than equalTo(null)
 
 ```
 
