@@ -2,8 +2,6 @@
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 `
 0src/main/java/pl/devfoundry/testing/Account.java,9\4\94e6e0ed90349254f30fb4561672738abe3fe806
 d
@@ -12,5 +10,3 @@ u
 Efiles/orderBackup_java.util.concurrent.ThreadLocalRandom@537f60bf.txt,6\8\683cca6d47c80d0cc0f78f3fbb0e3e6608c92508
 a
 1src/test/java/pl/devfoundry/testing/MealTest.java,0\c\0c6f2052b8bf8c7574b568cf987ff396124c101d
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
