@@ -3,6 +3,7 @@ package pl.devfoundry.testing;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -116,4 +117,22 @@ class AccountTest {
             assertTrue(account.isActive());
         });
     }
+
+    @Test
+    @SuppressWarnings("all")
+    @RepeatedTest(5)
+    void test_newAccountWithNullAddressShouldBeInactive() {
+        // given
+        final Address address = new Address();
+
+        // when
+        final Account account = new Account(address);
+
+        // then
+        // functional interface Executable - lambda expression
+        assumingThat(address == null, () -> {
+            assertFalse(account.isActive());
+        });
+    }
+
 }
