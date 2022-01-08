@@ -33,6 +33,7 @@ class OrderBackupTest {
     }
 
     @Test
+    @SuppressWarnings("all")
     void test_backupOrderWithOneMeal() throws IOException {
         // given
         final Meal meal = new Meal(7, "Fries");
