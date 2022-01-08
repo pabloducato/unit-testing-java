@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Singular;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -25,8 +26,8 @@ public class Order {
         order.setMeals(collection);
     }
 
-    public void cancel(List<Meal> list) {
-        list.clear();
+    public void cancel(Order order) {
+        order.setMeals(new ArrayList<>());
     }
 
 }

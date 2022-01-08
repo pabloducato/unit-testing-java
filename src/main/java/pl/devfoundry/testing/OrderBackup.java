@@ -1,13 +1,11 @@
 package pl.devfoundry.testing;
 
 import lombok.Getter;
-import lombok.ToString;
 
 import java.io.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Getter
-@ToString
 public class OrderBackup {
 
     private Writer writer;

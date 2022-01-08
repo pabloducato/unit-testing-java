@@ -5,7 +5,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,7 +29,6 @@ class OrderTest {
     private static final String DARA_KEBAB = "Dara Kebab";
 
     private Order order;
-    private final List<Meal> meals = new ArrayList<>();
 
     @BeforeEach
     void setUp() {
@@ -40,7 +38,7 @@ class OrderTest {
 
     @AfterEach
     void tearDown() {
-        order.cancel(meals);
+        order.cancel(order);
         log.info("@AfterEach -> Launched inside the @AfterEach annotated `tearDown` method");
     }
 
