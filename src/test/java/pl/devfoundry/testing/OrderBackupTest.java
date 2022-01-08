@@ -5,14 +5,11 @@ import org.junit.jupiter.api.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Slf4j
 class OrderBackupTest {
 
     private static OrderBackup orderBackup;
-    private final List<Meal> meals = new ArrayList<>();
 
     @BeforeAll
     static void beforeAll() throws FileNotFoundException {
