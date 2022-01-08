@@ -11,7 +11,7 @@ public class OrderBackup {
     private Writer writer;
 
     public void createFile() throws FileNotFoundException {
-        final File file = new File("orderBackup_" + ThreadLocalRandom.current().toString() + ".txt");
+        final File file = new File("files/orderBackup_" + ThreadLocalRandom.current().toString() + ".txt");
         final FileOutputStream fileOutputStream = new FileOutputStream(file);
         final OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream);
         writer = new BufferedWriter(outputStreamWriter);
