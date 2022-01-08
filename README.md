@@ -52,6 +52,8 @@ git fetch origin
 git branch -u origin/main main
 git remote set-head origin -a
 
+In JUnit 4 there were used annotations like @BeforeClass and @AfterClass
+
 ```
 
 
