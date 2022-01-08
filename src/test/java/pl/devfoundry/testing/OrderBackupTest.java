@@ -23,12 +23,13 @@ class OrderBackupTest {
     }
 
     @BeforeEach
-    void setUp() {
-
+    void setUp() throws IOException {
+        orderBackup.getWriter().append("New order: ");
     }
 
     @AfterEach
-    void tearDown() {
+    void tearDown() throws IOException {
+        orderBackup.getWriter().append(" successfully saved");
     }
 
     @Test
