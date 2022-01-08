@@ -54,6 +54,8 @@ git remote set-head origin -a
 
 In JUnit 4 there were used annotations like @BeforeClass and @AfterClass
 
+In JUnit 4 there was an annotation called @Ignore to disable single test case
+
 ```
 
 
