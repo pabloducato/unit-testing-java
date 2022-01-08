@@ -80,7 +80,7 @@ class OrderTest {
         final Meal ourSecondMeal = new Meal(VALUE_15, SANDWICH);
 
         // when
-        order.setMeals(order.addMealToOrder(meals, ourFirstMeal));
+        order.addMealToOrder(order, ourFirstMeal);
 
         // then
         assertThat(order.getMeals(), hasSize(VALUE_1));
@@ -97,8 +97,8 @@ class OrderTest {
         final Meal ourSecondMeal = new Meal(VALUE_15, SANDWICH);
 
         // when
-        order.setMeals(order.addMealToOrder(meals, ourFirstMeal));
-        order.setMeals(order.removeMealFromTheOrder(meals, ourFirstMeal));
+        order.addMealToOrder(order, ourFirstMeal);
+        order.removeMealFromTheOrder(order, ourFirstMeal);
 
         // then
         assertThat(order.getMeals(), hasSize(VALUE_0));
@@ -113,8 +113,8 @@ class OrderTest {
         final Meal ourSecondMeal = new Meal(VALUE_15, SANDWICH);
 
         // when
-        order.setMeals(order.addMealToOrder(meals, ourFirstMeal));
-        order.setMeals(order.addMealToOrder(meals, ourSecondMeal));
+        order.addMealToOrder(order, ourFirstMeal);
+        order.addMealToOrder(order, ourSecondMeal);
 
         // then
         assertThat(order.getMeals(), containsInAnyOrder(ourSecondMeal, ourFirstMeal));

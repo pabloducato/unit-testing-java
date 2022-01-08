@@ -4,8 +4,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Singular;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Data
 @Builder
@@ -14,14 +15,14 @@ public class Order {
     @Singular
     private List<Meal> meals;
 
-    public List<Meal> addMealToOrder(List<Meal> list, Meal meal) {
-        list.add(meal);
-        return Collections.unmodifiableList(list);
+    public void addMealToOrder(Order order, Meal meal) {
+        final List<Meal> collection = Stream.concat(meals.stream(), Stream.of(meal)).collect(Collectors.toUnmodifiableList());
+        order.setMeals(collection);
     }
 
-    public List<Meal> removeMealFromTheOrder(List<Meal> list, Meal meal) {
-        list.remove(meal);
-        return Collections.unmodifiableList(list);
+    public void removeMealFromTheOrder(Order order, Meal meal) {
+        final List<Meal> collection = order.getMeals().stream().filter(o -> !o.equals(meal)).collect(Collectors.toUnmodifiableList());
+        order.setMeals(collection);
     }
 
     public void cancel(List<Meal> list) {
