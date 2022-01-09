@@ -56,7 +56,7 @@ In JUnit 4 there were used annotations like @BeforeClass and @AfterClass.
 
 In JUnit 4 there was an annotation called @Ignore to disable single test case.
 
-In JUnit 4 to created single parameterized test there was a need to create
+In JUnit 4 to create single parameterized test there was a need to create
 a special test runner and special @Parameters annotation.
 
 ```
