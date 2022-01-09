@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="pl.devfoundry.testing.OrderTest" time="0.027" tests="7" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="pl.devfoundry.testing.OrderTest" time="0.039" tests="10" errors="0" skipped="0" failures="0">
   <properties>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="java.specification.version" value="11"/>
@@ -14,7 +14,7 @@
     <property name="os.name" value="Linux"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/mnt/c/Users/Dell/Source/Repos/unit-testing-java/target/surefire/surefirebooter11813575501780634399.jar /mnt/c/Users/Dell/Source/Repos/unit-testing-java/target/surefire 2022-01-09T18-28-03_651-jvmRun1 surefire9927170011404502118tmp surefire_015474997645799470623tmp"/>
+    <property name="sun.java.command" value="/mnt/c/Users/Dell/Source/Repos/unit-testing-java/target/surefire/surefirebooter9848869896385259128.jar /mnt/c/Users/Dell/Source/Repos/unit-testing-java/target/surefire 2022-01-09T21-57-38_191-jvmRun1 surefire10880970773131374880tmp surefire_08906110681890311221tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/mnt/c/Users/Dell/Source/Repos/unit-testing-java/target/test-classes:/mnt/c/Users/Dell/Source/Repos/unit-testing-java/target/classes:/home/pawel/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.2/junit-jupiter-engine-5.8.2.jar:/home/pawel/.m2/repository/org/junit/platform/junit-platform-engine/1.8.2/junit-platform-engine-1.8.2.jar:/home/pawel/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/pawel/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.2/junit-jupiter-api-5.8.2.jar:/home/pawel/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/pawel/.m2/repository/org/junit/platform/junit-platform-commons/1.8.2/junit-platform-commons-1.8.2.jar:/home/pawel/.m2/repository/org/junit/platform/junit-platform-launcher/1.8.2/junit-platform-launcher-1.8.2.jar:/home/pawel/.m2/repository/org/projectlombok/lombok/1.18.22/lombok-1.18.22.jar:/home/pawel/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/home/pawel/.m2/repository/org/assertj/assertj-core/3.22.0/assertj-core-3.22.0.jar:/home/pawel/.m2/repository/org/slf4j/slf4j-api/2.0.0-alpha5/slf4j-api-2.0.0-alpha5.jar:/home/pawel/.m2/repository/org/slf4j/slf4j-simple/2.0.0-alpha5/slf4j-simple-2.0.0-alpha5.jar:/home/pawel/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.2/junit-jupiter-params-5.8.2.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/mnt/c/Users/Dell/Source/Repos/unit-testing-java/target/surefire/surefirebooter11813575501780634399.jar"/>
+    <property name="surefire.real.class.path" value="/mnt/c/Users/Dell/Source/Repos/unit-testing-java/target/surefire/surefirebooter9848869896385259128.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.11+9-Ubuntu-0ubuntu2.18.04"/>
     <property name="user.name" value="pawel"/>
@@ -55,11 +55,14 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="test_assertArrayEquals" classname="pl.devfoundry.testing.OrderTest" time="0.003"/>
+  <testcase name="test_assertArrayEquals" classname="pl.devfoundry.testing.OrderTest" time="0.004"/>
   <testcase name="test_mealsShouldBeInCorrectOrderAfterAddingThemToOrder" classname="pl.devfoundry.testing.OrderTest" time="0.004"/>
-  <testcase name="test_ifTwoMealListsAreTheSame" classname="pl.devfoundry.testing.OrderTest" time="0.003"/>
-  <testcase name="test_removingMealFromTheOrderShouldDecreaseOrderSize" classname="pl.devfoundry.testing.OrderTest" time="0.002"/>
+  <testcase name="test_cancelingOrderShouldRemoveAllItemsFromMealsList" classname="pl.devfoundry.testing.OrderTest" time="0.003"/>
+  <testcase name="test_emptyOrderTotalPriceShouldEqualsZero" classname="pl.devfoundry.testing.OrderTest" time="0.003"/>
+  <testcase name="test_ifTwoMealListsAreTheSame" classname="pl.devfoundry.testing.OrderTest" time="0.004"/>
+  <testcase name="test_removingMealFromTheOrderShouldDecreaseOrderSize" classname="pl.devfoundry.testing.OrderTest" time="0.003"/>
+  <testcase name="test_orderTotalPriceShouldNotExceedsMaxIntValue" classname="pl.devfoundry.testing.OrderTest" time="0.003"/>
   <testcase name="test_assertArrayNotEquals" classname="pl.devfoundry.testing.OrderTest" time="0.005"/>
   <testcase name="test_addingMealToOrderShouldIncreaseOrderSize" classname="pl.devfoundry.testing.OrderTest" time="0.005"/>
-  <testcase name="test_mealListShouldBeEmptyAfterCreationOfAnOrder" classname="pl.devfoundry.testing.OrderTest" time="0.005"/>
+  <testcase name="test_mealListShouldBeEmptyAfterCreationOfAnOrder" classname="pl.devfoundry.testing.OrderTest" time="0.004"/>
 </testsuite>

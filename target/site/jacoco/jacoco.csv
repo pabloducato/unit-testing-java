@@ -1,0 +1,15 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+unit-testing-java,pl.devfoundry.testing.homework,Cargo,47,12,10,0,6,5,7,2,2,2
+unit-testing-java,pl.devfoundry.testing.homework,Coordinates,21,73,7,11,1,15,8,7,1,5
+unit-testing-java,pl.devfoundry.testing.homework,Unit,16,119,1,5,4,30,2,11,1,9
+unit-testing-java,pl.devfoundry.testing,Account,125,51,27,3,1,16,19,9,5,8
+unit-testing-java,pl.devfoundry.testing,OrderStatus,0,34,0,0,0,2,0,1,0,1
+unit-testing-java,pl.devfoundry.testing,Address,107,17,21,1,2,3,18,3,7,3
+unit-testing-java,pl.devfoundry.testing,Order,63,77,15,3,0,15,11,11,3,10
+unit-testing-java,pl.devfoundry.testing,BeforeAfterExtension,0,15,0,0,0,6,0,4,0,4
+unit-testing-java,pl.devfoundry.testing,Meal,58,89,8,12,1,8,11,12,5,8
+unit-testing-java,pl.devfoundry.testing,IllegalArgumentExceptionIgnoreExtension,2,15,1,1,1,5,1,3,0,3
+unit-testing-java,pl.devfoundry.testing,Cart,65,82,14,2,0,18,11,9,4,8
+unit-testing-java,pl.devfoundry.testing,Cart.CartBuilder,67,17,11,2,0,1,11,2,4,2
+unit-testing-java,pl.devfoundry.testing,Order.OrderBuilder,67,17,11,2,0,1,11,2,4,2
+unit-testing-java,pl.devfoundry.testing,OrderBackup,0,55,0,2,0,14,0,6,0,5

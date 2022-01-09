@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Unit.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">unit-testing-java</a> &gt; <a href="index.source.html" class="el_package">pl.devfoundry.testing.homework</a> &gt; <span class="el_source">Unit.java</span></div><h1>Unit.java</h1><pre class="source lang-java linenums">package pl.devfoundry.testing.homework;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class Unit {
+
+<span class="fc" id="L9">    private static Random random = new Random();</span>
+
+    private Coordinates coordinates;
+    private int fuel;
+    private int maxFuel;
+    private List&lt;Cargo&gt; cargo;
+    private int maxCargoWeight;
+    private int currentCargoWeight;
+
+<span class="fc" id="L18">    Unit(Coordinates startCoordinates, int maxFuel, int maxCargoWeight) {</span>
+
+<span class="fc" id="L20">        this.coordinates = startCoordinates;</span>
+<span class="fc" id="L21">        this.maxFuel = maxFuel;</span>
+<span class="fc" id="L22">        this.fuel = maxFuel;</span>
+<span class="fc" id="L23">        this.maxCargoWeight = maxCargoWeight;</span>
+<span class="fc" id="L24">        this.currentCargoWeight = 0;</span>
+<span class="fc" id="L25">        this.cargo = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L27">    }</span>
+
+    Coordinates move(int x, int y) {
+
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (this.fuel - (x + y) &lt; 0) {</span>
+<span class="fc" id="L32">            throw new IllegalStateException(&quot;Unit cannot move that far&quot;);</span>
+        }
+
+<span class="fc" id="L35">        Coordinates coordinatesAfterMove = Coordinates.copy(this.coordinates, x, y);</span>
+<span class="fc" id="L36">        this.coordinates = coordinatesAfterMove;</span>
+
+<span class="fc" id="L38">        this.fuel = this.fuel - (x + y);</span>
+
+<span class="fc" id="L40">        return coordinatesAfterMove;</span>
+    }
+
+    void tankUp() {
+
+<span class="fc" id="L45">        int restPoints = random.nextInt(10);</span>
+
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        if (restPoints + this.fuel &gt;= maxFuel) {</span>
+<span class="fc" id="L48">            this.fuel = maxFuel;</span>
+        } else {
+<span class="nc" id="L50">            this.fuel += restPoints;</span>
+        }
+
+<span class="fc" id="L53">    }</span>
+
+    void loadCargo(Cargo cargo) {
+
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        if (currentCargoWeight + cargo.getWeight() &gt; maxCargoWeight) {</span>
+<span class="fc" id="L58">            throw new IllegalStateException(&quot;Can not load any more cargo&quot;);</span>
+        }
+
+<span class="fc" id="L61">        this.cargo.add(cargo);</span>
+
+<span class="fc" id="L63">        this.currentCargoWeight = calculateCargoWeight();</span>
+
+<span class="fc" id="L65">    }</span>
+
+    void unloadCargo(Cargo cargo) {
+<span class="nc" id="L68">        this.cargo.remove(cargo);</span>
+<span class="nc" id="L69">        this.currentCargoWeight = calculateCargoWeight();</span>
+<span class="nc" id="L70">    }</span>
+
+    void unloadAllCargo() {
+<span class="fc" id="L73">        cargo.clear();</span>
+<span class="fc" id="L74">        this.currentCargoWeight = 0;</span>
+<span class="fc" id="L75">    }</span>
+
+
+    private int calculateCargoWeight() {
+<span class="fc" id="L79">        return cargo.stream().mapToInt(Cargo::getWeight).sum();</span>
+    }
+
+    int getFuel() {
+<span class="fc" id="L83">        return this.fuel;</span>
+    }
+
+    int getLoad() {
+<span class="fc" id="L87">        return this.currentCargoWeight;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
