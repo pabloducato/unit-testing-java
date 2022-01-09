@@ -18,9 +18,9 @@ mvn -Dtest=AccountTest#test_checkWhetherAccountWasActivated test
 
 ## Guidelines
 
-The Hamcrest's is() matcher will throw NullPointerException when the expecattion is `null`
+The Hamcrest's is() matcher will throw NullPointerException when the expecattion is `null`.
 
-It's better to use the assertThat() -> nullValue() expected assertion rather than equalTo(null)
+It's better to use the assertThat() -> nullValue() expected assertion rather than equalTo(null).
 
 ## hamcrest.org
 
@@ -34,9 +34,9 @@ Section -> Java -> API Documentation (JavaDoc) -> Latest Version -> JavaHamcrest
 
 Section -> Quick Start -> Javadoc (3.x)
 
-Matchers are very helpful and can correct the visibility, the readability, and clarity our unit tests
+Matchers are very helpful and can correct the visibility, the readability, and clarity our unit tests.
 
-We encourage you to use the Hamcrest && Assertj matching libraties
+We encourage you to use the Hamcrest && Assertj matching libraties.
 
 ## .gitignore templates
 
@@ -52,9 +52,12 @@ git fetch origin
 git branch -u origin/main main
 git remote set-head origin -a
 
-In JUnit 4 there were used annotations like @BeforeClass and @AfterClass
+In JUnit 4 there were used annotations like @BeforeClass and @AfterClass.
 
-In JUnit 4 there was an annotation called @Ignore to disable single test case
+In JUnit 4 there was an annotation called @Ignore to disable single test case.
+
+In JUnit 4 to created single parameterized test there was a need to create
+a special test runner and special @Parameters annotation.
 
 ```
 
