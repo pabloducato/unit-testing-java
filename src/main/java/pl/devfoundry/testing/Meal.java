@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class Meal {
 
     private int price;
+    private int quantity;
     private String name;
 
     public int getDiscountedPrice(int discount) {

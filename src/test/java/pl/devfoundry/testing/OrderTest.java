@@ -78,8 +78,8 @@ class OrderTest {
     @Test
     void test_addingMealToOrderShouldIncreaseOrderSize() {
         // given
-        final Meal ourFirstMeal = new Meal(VALUE_15, BURGER);
-        final Meal ourSecondMeal = new Meal(VALUE_15, SANDWICH);
+        final Meal ourFirstMeal = new Meal(VALUE_15, VALUE_1, BURGER);
+        final Meal ourSecondMeal = new Meal(VALUE_15, VALUE_1, SANDWICH);
 
         // when
         order.addMealToOrder(order, ourFirstMeal);
@@ -95,8 +95,8 @@ class OrderTest {
     @Test
     void test_removingMealFromTheOrderShouldDecreaseOrderSize() {
         // given
-        final Meal ourFirstMeal = new Meal(VALUE_15, BURGER);
-        final Meal ourSecondMeal = new Meal(VALUE_15, SANDWICH);
+        final Meal ourFirstMeal = new Meal(VALUE_15, VALUE_1, BURGER);
+        final Meal ourSecondMeal = new Meal(VALUE_15, VALUE_1, SANDWICH);
 
         // when
         order.addMealToOrder(order, ourFirstMeal);
@@ -111,8 +111,8 @@ class OrderTest {
     @Test
     void test_mealsShouldBeInCorrectOrderAfterAddingThemToOrder() {
         // given
-        final Meal ourFirstMeal = new Meal(VALUE_15, BURGER);
-        final Meal ourSecondMeal = new Meal(VALUE_15, SANDWICH);
+        final Meal ourFirstMeal = new Meal(VALUE_15, VALUE_1, BURGER);
+        final Meal ourSecondMeal = new Meal(VALUE_15, VALUE_1, SANDWICH);
 
         // when
         order.addMealToOrder(order, ourFirstMeal);
@@ -126,9 +126,9 @@ class OrderTest {
     @Test
     void test_ifTwoMealListsAreTheSame() {
         // given
-        final Meal ourFirstMeal = new Meal(VALUE_15, BURGER);
-        final Meal ourSecondMeal = new Meal(VALUE_15, SANDWICH);
-        final Meal ourThirdMeal = new Meal(VALUE_18, DARA_KEBAB);
+        final Meal ourFirstMeal = new Meal(VALUE_15, VALUE_1, BURGER);
+        final Meal ourSecondMeal = new Meal(VALUE_15, VALUE_1, SANDWICH);
+        final Meal ourThirdMeal = new Meal(VALUE_18, VALUE_1, DARA_KEBAB);
         final List<Meal> listOfMealsOne = Arrays.asList(ourFirstMeal, ourSecondMeal);
         final List<Meal> listOfMealsTwo = Arrays.asList(ourFirstMeal, ourSecondMeal);
 

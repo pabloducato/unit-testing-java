@@ -36,7 +36,7 @@ class OrderBackupTest {
     @SuppressWarnings("all")
     void test_backupOrderWithOneMeal() throws IOException {
         // given
-        final Meal meal = new Meal(7, "Fries");
+        final Meal meal = new Meal(7, 1, "Fries");
         Order order = Order.builder().build();
         order.addMealToOrder(order, meal);
 

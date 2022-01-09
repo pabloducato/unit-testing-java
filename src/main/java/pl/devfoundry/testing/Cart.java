@@ -30,7 +30,7 @@ public class Cart {
     public void simulateLargeOrder() {
         final Cart cart = Cart.builder().build();
         for (int i = 0; i < 1000; i++) {
-            final Meal meal = new Meal(i % 10, "Hamburger no " + i);
+            final Meal meal = new Meal(i % 10, 1, "Hamburger no " + i);
             final Order order = Order.builder().build();
             order.addMealToOrder(order, meal);
             addOrderToCart(cart, order);
