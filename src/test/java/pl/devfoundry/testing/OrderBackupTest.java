@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 @Slf4j
+@Tag("test")
 class OrderBackupTest {
 
     private static OrderBackup orderBackup;
@@ -32,6 +33,7 @@ class OrderBackupTest {
         orderBackup.getWriter().append(" successfully saved");
     }
 
+    @Tag("fries")
     @Test
     @SuppressWarnings("all")
     void test_backupOrderWithOneMeal() throws IOException {

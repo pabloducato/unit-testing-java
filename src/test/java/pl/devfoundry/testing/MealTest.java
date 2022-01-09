@@ -20,6 +20,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
+@Tag("test")
 class MealTest {
 
     @BeforeEach
@@ -152,6 +153,7 @@ class MealTest {
         );
     }
 
+    @Tag("fries")
     @TestFactory
     Collection<DynamicTest> calculateMealPrices() {
         final Order order = Order.builder().build();

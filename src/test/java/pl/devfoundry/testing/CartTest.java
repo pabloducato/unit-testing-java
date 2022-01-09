@@ -10,6 +10,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTimeout;
 
+@Tag("test")
 @DisplayName("Test cases for Cart")
 class CartTest {
 

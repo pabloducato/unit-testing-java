@@ -3,6 +3,7 @@ package pl.devfoundry.testing;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -16,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 @Slf4j
 @ExtendWith(BeforeAfterExtension.class)
+@Tag("test")
 class OrderTest {
 
     private static final Integer VALUE_0 = 0;

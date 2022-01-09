@@ -59,6 +59,11 @@ In JUnit 4 there was an annotation called @Ignore to disable single test case.
 In JUnit 4 to create single parameterized test there was a need to create
 a special test runner and special @Parameters annotation.
 
+In JUnit 4 the equivalent for the @Tag annotation was the @Category annotation.
+Inside it was provided the name of the class that it did want to categorize direct tests.
+The @Tag annotation is much more better, beacuse we receive greater flexibility.
+We can place @Tag annotations over both methods and classes.
+
 ```
 
 
