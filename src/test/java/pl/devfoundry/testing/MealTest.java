@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -126,6 +127,19 @@ class MealTest {
         // given // when // then
         assertThat(name, notNullValue());
         assertThat(name, endsWith("cake"));
+    }
+
+    @ExtendWith(IllegalArgumentExceptionIgnoreExtension.class)
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3, 5, 8})
+    void test_mealPricesShouldBeLowerThan10(int price) {
+        // given // when
+        if (price > 5) {
+            throw new IllegalArgumentException();
+        }
+
+        // then
+        assertThat(price, lessThan(20));
     }
 
     private static Stream<Arguments> createMealsWithNameAndPrice() {

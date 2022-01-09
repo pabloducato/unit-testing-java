@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 @Slf4j
+@ExtendWith(BeforeAfterExtension.class)
 class OrderTest {
 
     private static final Integer VALUE_0 = 0;
@@ -32,12 +34,14 @@ class OrderTest {
 
     @BeforeEach
     void setUp() {
+        log.info("Before each");
         log.info("@BeforeEach -> Launched inside the @BeforeEach annotated `setUp` method");
         order = Order.builder().build();
     }
 
     @AfterEach
     void tearDown() {
+        log.info("After each");
         order.cancel(order);
         log.info("@AfterEach -> Launched inside the @AfterEach annotated `tearDown` method");
     }

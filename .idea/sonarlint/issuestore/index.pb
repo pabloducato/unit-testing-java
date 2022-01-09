@@ -3,8 +3,6 @@
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 ]
--src/main/java/pl/devfoundry/testing/Meal.java,1\7\171a043a450662b75939b5cd9d0ccbf290e8831e
-]
 -src/main/java/pl/devfoundry/testing/Cart.java,6\6\66c1e586d47548270d666919447f969ff6820feb
 ^
 .src/main/java/pl/devfoundry/testing/Order.java,f\9\f944612f010e6cebcdcbcca5f2c4676849ed5ac3
@@ -14,8 +12,6 @@ h
 8src/test/java/pl/devfoundry/testing/OrderBackupTest.java,9\c\9cbfd06f95285d1d81d1f705126d0d1fe1691c3f
 a
 1src/test/java/pl/devfoundry/testing/CartTest.java,5\4\5457e733d96d097e910b1f2f1f5076c1d0b48c1a
-d
-4src/test/java/pl/devfoundry/testing/AccountTest.java,c\b\cb1822078beeed37f139da23473ac671365412e4
 `
 0src/main/java/pl/devfoundry/testing/Account.java,9\4\94e6e0ed90349254f30fb4561672738abe3fe806
 b
