@@ -133,4 +133,13 @@ class AccountTest {
         });
     }
 
+    @Test
+    void test_invalidEmailShouldThrowException() {
+        // given
+        final Account account = new Account();
+
+        // when // then
+        assertThrows(IllegalArgumentException.class, () -> account.setEmail("wrongEmail"));
+    }
+
 }

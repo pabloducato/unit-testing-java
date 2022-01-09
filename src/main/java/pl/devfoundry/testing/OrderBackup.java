@@ -19,6 +19,9 @@ public class OrderBackup {
     }
 
     public void backupOrder(Order order) throws IOException {
+        if (writer == null) {
+            throw new IOException("Backup file not created");
+        }
         writer.append(order.toString());
     }
 

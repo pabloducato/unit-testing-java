@@ -12,8 +12,7 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 @ExtendWith(BeforeAfterExtension.class)
@@ -25,6 +24,7 @@ class OrderTest {
     private static final Integer VALUE_2 = 2;
     private static final Integer VALUE_3 = 3;
     private static final Integer VALUE_4 = 4;
+    private static final Integer VALUE_5 = 5;
     private static final Integer VALUE_15 = 15;
     private static final Integer VALUE_18 = 18;
 
@@ -110,6 +110,7 @@ class OrderTest {
         assertThat(order.getMeals(), not(contains(ourSecondMeal)));
     }
 
+    // CORRECT -> O -> ORDERING
     @Test
     void test_mealsShouldBeInCorrectOrderAfterAddingThemToOrder() {
         // given
@@ -123,6 +124,8 @@ class OrderTest {
         // then
         assertThat(order.getMeals(), containsInAnyOrder(ourSecondMeal, ourFirstMeal));
         assertThat(order.getMeals(), contains(ourFirstMeal, ourSecondMeal));
+        assertThat(order.getMeals().get(0), is(ourFirstMeal));
+        assertThat(order.getMeals().get(1), is(ourSecondMeal));
     }
 
     @Test
@@ -141,4 +144,45 @@ class OrderTest {
         assertThat(listOfMealsOne, not(contains(ourThirdMeal)));
     }
 
+
+    @Test
+    void test_orderTotalPriceShouldNotExceedsMaxIntValue() {
+        // given
+        final Meal ourFirstMeal = new Meal(Integer.MAX_VALUE, VALUE_1, BURGER);
+        final Meal ourSecondMeal = new Meal(Integer.MAX_VALUE, VALUE_1, SANDWICH);
+
+        // when
+        order.addMealToOrder(order, ourFirstMeal);
+        order.addMealToOrder(order, ourSecondMeal);
+
+        // then
+//        int sum = order.totalPrice();
+//        log.info(String.valueOf(sum));
+        assertThrows(IllegalStateException.class, () -> order.totalPrice());
+    }
+
+    // CORRECT -> R -> REFERENCE
+    @Test
+    void test_emptyOrderTotalPriceShouldEqualsZero() {
+        // given
+        // Order is created in @BeforeEach method
+
+        // when // then
+        assertThat(order.totalPrice(), is(0));
+    }
+
+    @Test
+    void test_cancelingOrderShouldRemoveAllItemsFromMealsList() {
+        // given
+        final Meal ourFirstMeal = new Meal(VALUE_15, VALUE_1, BURGER);
+        final Meal ourSecondMeal = new Meal(VALUE_5, VALUE_1, SANDWICH);
+
+        // when
+        order.addMealToOrder(order, ourFirstMeal);
+        order.addMealToOrder(order, ourSecondMeal);
+        order.cancel(order);
+
+        // then
+        assertThat(order.getMeals().size(), is(0));
+    }
 }
