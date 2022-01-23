@@ -20,4 +20,8 @@ public class Meal {
         return this.price - discount;
     }
 
+    int sumPrice() {
+        return getPrice() * getQuantity();
+    }
+
 }

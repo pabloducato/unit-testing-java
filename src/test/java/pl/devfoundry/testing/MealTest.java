@@ -21,6 +21,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @Tag("test")
 class MealTest {
@@ -175,6 +178,22 @@ class MealTest {
         }
         return dynamicTests;
     }
+
+    @Test
+    void testMealSumPrice() {
+        // given
+        final Meal meal = mock(Meal.class);
+        given(meal.getPrice()).willReturn(15);
+        given(meal.getQuantity()).willReturn(3);
+        when(meal.sumPrice()).thenCallRealMethod();
+
+        // when
+        final int result = meal.sumPrice();
+
+        // then
+        assertThat(result, equalTo(45));
+    }
+
 
     private static Stream<Arguments> createMealsWithNameAndPrice() {
         return Stream.of(
