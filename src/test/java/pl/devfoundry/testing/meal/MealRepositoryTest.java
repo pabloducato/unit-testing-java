@@ -13,6 +13,7 @@ import static org.hamcrest.Matchers.is;
 class MealRepositoryTest {
 
     private static final String MEAL_PIZZA = "Pizza";
+    private static final String MEAL_PIZZA_STARTING_CHARS = "Pi";
 
     private MealRepository mealRepository;
 
@@ -49,17 +50,35 @@ class MealRepositoryTest {
     }
 
     @Test
-    void shouldBeAbleToFindMealByName() {
+    void shouldBeAbleToFindMealByExactName() {
 
         // given
         final Meal meal = new Meal(10, 1, MEAL_PIZZA);
+        final Meal meal2 = new Meal(10, 1, MEAL_PIZZA_STARTING_CHARS);
         mealRepository.add(meal);
+        mealRepository.add(meal2);
 
         // when
-        List<Meal> results = mealRepository.findByName(MEAL_PIZZA);
+        List<Meal> results = mealRepository.findByName(MEAL_PIZZA, true);
 
         // then
         assertThat(results.size(), is(1));
+    }
+
+    @Test
+    void shouldBeAbleToFindMealByStartingLetters() {
+
+        // given
+        final Meal meal = new Meal(10, 1, MEAL_PIZZA);
+        final Meal meal2 = new Meal(10, 1, MEAL_PIZZA_STARTING_CHARS);
+        mealRepository.add(meal);
+        mealRepository.add(meal2);
+
+        // when
+        List<Meal> results = mealRepository.findByName(MEAL_PIZZA_STARTING_CHARS, false);
+
+        // then
+        assertThat(results.size(), is(2));
     }
 
     @Test

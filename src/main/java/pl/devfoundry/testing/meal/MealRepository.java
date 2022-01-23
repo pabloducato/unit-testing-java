@@ -30,10 +30,21 @@ public class MealRepository {
                 .collect(Collectors.toUnmodifiableList());
     }
 
-    public List<Meal> findByName(String pizza) {
-        return meals.stream()
-                .filter(meal -> meal.getName().equals(pizza))
-                .collect(Collectors.toUnmodifiableList());
+    public List<Meal> findByName(String pizza, boolean exactMatch) {
+
+        List<Meal> result;
+
+        if (exactMatch) {
+            result = meals.stream()
+                    .filter(meal -> meal.getName().equals(pizza))
+                    .collect(Collectors.toUnmodifiableList());
+        } else {
+            result = meals.stream()
+                    .filter(meal -> meal.getName().startsWith(pizza))
+                    .collect(Collectors.toUnmodifiableList());
+        }
+
+        return result;
     }
 
     public List<Meal> findByPrice(int mealPrice) {
