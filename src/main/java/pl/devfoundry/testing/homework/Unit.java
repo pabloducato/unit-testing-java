@@ -87,4 +87,12 @@ public class Unit {
         return this.currentCargoWeight;
     }
 
+    Coordinates getCoordinates() {
+        return this.coordinates;
+    }
+
+    List<Cargo> getCargo() {
+        return this.cargo;
+    }
+
 }
