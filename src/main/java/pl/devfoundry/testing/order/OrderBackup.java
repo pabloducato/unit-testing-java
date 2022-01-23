@@ -1,7 +1,6 @@
 package pl.devfoundry.testing.order;
 
 import lombok.Getter;
-import pl.devfoundry.testing.order.Order;
 
 import java.io.*;
 import java.util.Calendar;

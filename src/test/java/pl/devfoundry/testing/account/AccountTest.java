@@ -2,8 +2,6 @@ package pl.devfoundry.testing.account;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
-import pl.devfoundry.testing.account.Account;
-import pl.devfoundry.testing.account.Address;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;

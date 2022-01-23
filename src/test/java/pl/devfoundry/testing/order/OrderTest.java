@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pl.devfoundry.testing.Meal;
 import pl.devfoundry.testing.extensions.BeforeAfterExtension;
-import pl.devfoundry.testing.order.Order;
 
 import java.util.Arrays;
 import java.util.List;
