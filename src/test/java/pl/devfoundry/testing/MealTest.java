@@ -8,6 +8,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import pl.devfoundry.testing.extensions.IllegalArgumentExceptionIgnoreExtension;
+import pl.devfoundry.testing.order.Order;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -156,7 +158,7 @@ class MealTest {
     @Tag("fries")
     @TestFactory
     Collection<DynamicTest> calculateMealPrices() {
-        final Order order = Order.builder().build();
+        final pl.devfoundry.testing.order.Order order = Order.builder().build();
         order.addMealToOrder(order, new Meal(10, 2, "Hamburger"));
         order.addMealToOrder(order, new Meal(7, 4, "Fries"));
         order.addMealToOrder(order, new Meal(22, 3, "Pizza"));

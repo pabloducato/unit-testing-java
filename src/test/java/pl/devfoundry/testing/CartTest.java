@@ -1,6 +1,7 @@
 package pl.devfoundry.testing;
 
 import org.junit.jupiter.api.*;
+import pl.devfoundry.testing.order.Order;
 
 import java.time.Duration;
 import java.util.List;
@@ -44,7 +45,7 @@ class CartTest {
     @Test
     void test_cartShouldNotBeEmptyAfterAddingOrderToCart() {
         // given
-        final Order order = Order.builder().build();
+        final pl.devfoundry.testing.order.Order order = pl.devfoundry.testing.order.Order.builder().build();
         final Cart cart = Cart.builder().build();
 
         // when
@@ -56,7 +57,7 @@ class CartTest {
                 notNullValue(),
                 hasSize(1),
                 is(not(empty())),
-                is(not(emptyCollectionOf(Order.class)))
+                is(not(emptyCollectionOf(pl.devfoundry.testing.order.Order.class)))
         ));
 
         // conjunction
@@ -64,7 +65,7 @@ class CartTest {
                 notNullValue(),
                 hasSize(1),
                 is(not(empty())),
-                is(not(emptyCollectionOf(Order.class)))
+                is(not(emptyCollectionOf(pl.devfoundry.testing.order.Order.class)))
         ));
 
         // assertAll matcher

@@ -1,8 +1,9 @@
-package pl.devfoundry.testing;
+package pl.devfoundry.testing.order;
 
 import lombok.Builder;
 import lombok.Data;
 import lombok.Singular;
+import pl.devfoundry.testing.Meal;
 
 import java.util.ArrayList;
 import java.util.List;

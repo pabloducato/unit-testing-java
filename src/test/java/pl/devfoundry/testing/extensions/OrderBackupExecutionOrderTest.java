@@ -1,8 +1,10 @@
-package pl.devfoundry.testing;
+package pl.devfoundry.testing.extensions;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pl.devfoundry.testing.order.Order;
+import pl.devfoundry.testing.order.OrderBackup;
 
 import java.io.IOException;
 

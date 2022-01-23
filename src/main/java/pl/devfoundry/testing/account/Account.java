@@ -1,4 +1,4 @@
-package pl.devfoundry.testing;
+package pl.devfoundry.testing.account;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

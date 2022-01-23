@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Singular;
 import lombok.extern.slf4j.Slf4j;
+import pl.devfoundry.testing.order.Order;
 
 import java.util.ArrayList;
 import java.util.List;
