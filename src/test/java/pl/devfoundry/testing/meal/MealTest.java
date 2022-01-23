@@ -1,4 +1,4 @@
-package pl.devfoundry.testing;
+package pl.devfoundry.testing.meal;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;

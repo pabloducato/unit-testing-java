@@ -2,7 +2,7 @@ package pl.devfoundry.testing.order;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
-import pl.devfoundry.testing.Meal;
+import pl.devfoundry.testing.meal.Meal;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
