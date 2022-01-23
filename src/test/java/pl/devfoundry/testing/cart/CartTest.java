@@ -1,6 +1,7 @@
-package pl.devfoundry.testing;
+package pl.devfoundry.testing.cart;
 
 import org.junit.jupiter.api.*;
+import pl.devfoundry.testing.Meal;
 import pl.devfoundry.testing.order.Order;
 
 import java.time.Duration;

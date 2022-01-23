@@ -14,6 +14,8 @@ import java.util.stream.Stream;
 @Builder
 public class Order {
 
+    private OrderStatus orderStatus;
+
     @Singular
     private List<Meal> meals;
 
@@ -38,6 +40,10 @@ public class Order {
         } else {
             return sum;
         }
+    }
+
+    public void changeOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
 }

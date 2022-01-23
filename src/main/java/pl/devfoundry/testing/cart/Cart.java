@@ -1,9 +1,10 @@
-package pl.devfoundry.testing;
+package pl.devfoundry.testing.cart;
 
 import lombok.Builder;
 import lombok.Data;
 import lombok.Singular;
 import lombok.extern.slf4j.Slf4j;
+import pl.devfoundry.testing.Meal;
 import pl.devfoundry.testing.order.Order;
 
 import java.util.ArrayList;
@@ -11,9 +12,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Slf4j
 @Data
 @Builder
-@Slf4j
 public class Cart {
 
     @Singular
