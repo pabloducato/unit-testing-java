@@ -8,6 +8,7 @@ import pl.devfoundry.testing.order.OrderStatus;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.*;
@@ -66,6 +67,92 @@ class CartServiceTest {
 
         assertThat(resultCart.getOrders(), hasSize(1));
         assertThat(resultCart.getOrders().get(0).getOrderStatus(), equalTo(OrderStatus.REJECTED));
+    }
+
+    @Test
+    void processCartShouldNotSendToPrepareWithArgumentMatches() {
+
+        // given
+        final Order order = Order.builder().build();
+        final Cart cart = Cart.builder().build();
+        cart.addOrderToCart(cart, order);
+
+        final CartHandler cartHandler = mock(CartHandler.class);
+        final CartService cartService = new CartService(cartHandler);
+
+        // any() - argument matcher z Mockito
+        // bardzo ogólny matcher, który łapie każdą wartość
+        given(cartHandler.canHandleCart(any(Cart.class))).willReturn(false);
+
+        // when
+        Cart resultCart = cartService.processCart(cart);
+
+        // then
+        verify(cartHandler, never()).sendToPrepare(any(Cart.class));
+        then(cartHandler).should(never()).sendToPrepare(any(Cart.class));
+
+        assertThat(resultCart.getOrders(), hasSize(1));
+        assertThat(resultCart.getOrders().get(0).getOrderStatus(), equalTo(OrderStatus.REJECTED));
+    }
+
+    @Test
+    void canHandleCartShouldReturnMultipleValues() {
+
+        // given  // when
+        final Order order = Order.builder().build();
+        final Cart cart = Cart.builder().build();
+        cart.addOrderToCart(cart, order);
+
+        final CartHandler cartHandler = mock(CartHandler.class);
+
+        // any() - argument matcher z Mockito
+        // bardzo ogólny matcher, który łapie każdą wartość
+        given(cartHandler.canHandleCart(any(Cart.class))).willReturn(true, false, false, true);
+
+        // then
+        assertThat(cartHandler.canHandleCart(cart), equalTo(true));
+        assertThat(cartHandler.canHandleCart(cart), equalTo(false));
+        assertThat(cartHandler.canHandleCart(cart), equalTo(false));
+        assertThat(cartHandler.canHandleCart(cart), equalTo(true));
+    }
+
+    @Test
+    void processCartShouldSendToPrepareWithLambdas() {
+
+        // given
+        final Order order = Order.builder().build();
+        final Cart cart = Cart.builder().build();
+        cart.addOrderToCart(cart, order);
+
+        final CartHandler cartHandler = mock(CartHandler.class);
+        final CartService cartService = new CartService(cartHandler);
+
+        given(cartHandler.canHandleCart(argThat(c -> c.getOrders().size() > 0))).willReturn(true);
+
+        // when
+        Cart resultCart = cartService.processCart(cart);
+
+        // then
+        then(cartHandler).should().sendToPrepare(cart);
+        assertThat(resultCart.getOrders(), hasSize(1));
+        assertThat(resultCart.getOrders().get(0).getOrderStatus(), equalTo(OrderStatus.PREPARING));
+    }
+
+    @Test
+    void canHandleCarShouldThrowException() {
+
+        // given
+        final Order order = Order.builder().build();
+        final Cart cart = Cart.builder().build();
+        cart.addOrderToCart(cart, order);
+
+        final CartHandler cartHandler = mock(CartHandler.class);
+        final CartService cartService = new CartService(cartHandler);
+
+        given(cartHandler.canHandleCart(cart)).willThrow(IllegalStateException.class);
+
+        // when // then
+        assertThrows(IllegalStateException.class, () -> cartService.processCart(cart));
     }
 
 }

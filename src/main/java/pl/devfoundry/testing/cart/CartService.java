@@ -12,11 +12,10 @@ public class CartService {
         if (cartHandler.canHandleCart(cart)) {
             cartHandler.sendToPrepare(cart);
             cart.getOrders().forEach(order -> order.changeOrderStatus(OrderStatus.PREPARING));
-            return cart;
         } else {
             cart.getOrders().forEach(order -> order.changeOrderStatus(OrderStatus.REJECTED));
-            return cart;
         }
+        return cart;
     }
 
 }
