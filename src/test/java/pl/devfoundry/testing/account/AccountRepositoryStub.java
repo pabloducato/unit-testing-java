@@ -15,4 +15,10 @@ public class AccountRepositoryStub implements AccountRepository {
         return Arrays.asList(account1, account2, account3);
     }
 
+    //getByName zostawiamy tak jak jest, nie będziemy się tym przejmować
+
+    @Override
+    public List<String> getByName(String name) {
+        return null;
+    }
 }
