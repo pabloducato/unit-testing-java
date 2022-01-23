@@ -1,1 +1,0 @@
-New order: Order(orderStatus=null, meals=[Meal(price=7, quantity=1, name=Fries)]) successfully saved
