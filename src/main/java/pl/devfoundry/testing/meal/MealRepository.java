@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Singular;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -52,4 +53,43 @@ public class MealRepository {
                 .filter(m -> m.getPrice() == mealPrice)
                 .collect(Collectors.toUnmodifiableList());
     }
+
+    public List<Meal> find(String name, boolean exactName, int price, SearchType priceSearchType) {
+
+        List<Meal> nameMatches = findByName(name, exactName);
+
+        return findByPriceWithInitialData(price, priceSearchType, nameMatches);
+
+    }
+
+    private List<Meal> findByPriceWithInitialData(int price, SearchType type, List<Meal> initialData) {
+        List<Meal> result = new ArrayList<>();
+
+        switch (type) {
+            case EXACT:
+                result = initialData.stream()
+                        .filter(meal -> meal.getPrice() == price)
+                        .collect(Collectors.toList());
+                break;
+            case LESS:
+                result = initialData.stream()
+                        .filter(meal -> meal.getPrice() < price)
+                        .collect(Collectors.toList());
+                break;
+            case MORE:
+                result = initialData.stream()
+                        .filter(meal -> meal.getPrice() > price)
+                        .collect(Collectors.toList());
+                break;
+
+        }
+
+        return result;
+    }
+
+    public List<Meal> findByPrice(int price, SearchType type) {
+
+        return findByPriceWithInitialData(price, type, meals);
+    }
+
 }
